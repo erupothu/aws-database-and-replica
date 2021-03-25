@@ -1,0 +1,49 @@
+
+#### 1. Replication instances
+ ### Create Repication Instance
+  -> Replication instance configuration (Name(replica machine name)
+  -> Instance class (t3 medium machine) for copying the data from Source DB to Target DB
+  -> Engine version (3.4.3)
+  -> Allocated storage (GiB) 50
+  -> VPC (default)
+  -> Advanced security and network configuration (Replication subnet group, Availability zone,VPC security group)
+  -> mainatanance (default)
+  
+  
+#### 2 Endpoints
+ ### create endpoint 
+ -> Endpoint type (source endpoint) 
+  -> Endpoint configuration (Endpoint identifier(endpoint_name), Source engine(Mysql Auroradb)
+  -> Access to endpoint database (Provide access information manually(source Server name (mysql serverhost ip),Port(3306), username(root), password(db_password)
+  -> Test endpoint connection (VPC (default), Replication instance(above created replication instance)
+  
+  #### 3Endpoints
+ ### create endpoint 
+ -> Endpoint type (target endpoint)
+  -> Endpoint configuration (Endpoint identifier(endpoint_name), Source engine(Mysql Auroradb)
+  -> Access to endpoint database (Provide access information manually(target Server name (mysql serverhost ip),Port(3306), username(root), password(db_password)
+  -> Test endpoint connection (VPC (default), Replication instance(above created replication instance)
+  
+#### Database migration tasks
+### Create task
+    -> Task configuration (Task identifier (task_name)
+    -> Replication instance (above created replication instance_name)
+    -> Source database endpoint ( above created source endpoint)
+    -> Target database endpoint (above created target endpoint)
+    -> Migration type (Migrate data and ongoing changes)
+    -> Task settings (Wizard,Drop tables on target,default, eanble cloud watch log)
+    -> Table mappings (Editing mode (wizard))
+    -> Selection rules (Add new section rule)
+    ->Schema (enter schema name)
+    ->Schema name (% for all schemas from source DB server)
+    -> Table name (% for all table else give table name from source DB server)
+    -> Migration task startup configuration (Manually later)
+    -> Create task.
+    -> start task
+    -> Done (this will load all the source DB data to Target DB)
+    -> 100% then you are done.
+    
+    
+    
+    
+    
