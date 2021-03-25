@@ -1,0 +1,28 @@
+
+
+## Select AWS RDS Service
+#### Database Dashboard
+     create Database 
+     -> Choose a database creation method (standard create) 
+     -> Engine options (Amazon Aurora)
+    -> Edition (Amazon Aurora with MySQL compatibility) 
+    -> Capacity type(Provisioned) 
+    -> Replication features(single Master) 
+    -> Engine version(MySql 5.7) 
+    -> Templates(Production) 
+    -> Settings( DB cluster identifier (cluster_name), Credentials Settings(Master username,Master password))
+    -> DB instance class(DB instance class(Memory optimized classes (includes r classes)), db-r5.large) 
+    -> Availability & durability(Multi-AZ deploymen,Create an Aurora Replica or Reader node in a different AZ (recommended for scaled availability))
+    -> Connectivity(Virtual private cloud (Default),Subnet group(default) 
+    -> Database authentication(Password authentication), Create Database
+    
+   ### Start the cluster
+    -> select cluster -> copy read or write endpoint
+   
+### Install Mysql Workbench in Ubuntu
+  > sudo apt install mysql-workbench
+  -> open workbench -> add connection -> add conncetion_name, endpoint, port, usename, password -> test connection (successful)
+  -> now create databse and tables
+  -> write querier on them.
+  -> done.
+    
