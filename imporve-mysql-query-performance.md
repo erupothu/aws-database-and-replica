@@ -1,4 +1,4 @@
-1. Optimize Your Database
+#### 1. Optimize Your Database
 
 You need to know how to design schemas to support efficient queries. Well-designed queries and schema are crucial for your application to work properly.
 
@@ -6,25 +6,25 @@ Optimizing your MySQL queries alone will not bring excellent database performanc
 
 The following strategies will help you to optimize your database.
 
-a. Normalize Tables
+##### a. Normalize Tables
 
 Normalization is a database design technique that organizes tables in a manner that reduces redundancy and dependency of data. It divides larger tables into smaller tables and links them using relationships. This is to avoid having fields that would be null and making sure that all fields in the table only belong to one domain of data being described.
 
 For example, in the employee table, the fields could be id, name, social security number, but those three fields have nothing to do with the department. Only employee id describes which department the employee belongs to. So this implies that which department an employee is in should be in another table.
 
-b. Use Optimal Data Types
+##### b. Use Optimal Data Types
 
 MySQL supports different data types and choosing the correct type to store your data is vital to have good performance. MySQL supports data of numeric types, date and time types, and string (character) types (integer, float, double, date, date_time, Varchar, text, etc.). Different data types serve different purposes. When creating your tables you need to understand what type of data each column will hold and choose the most fitting data type.
 
 If a field expects a date value, using a date_time data type is the best because you don’t have to run complicated functions to convert the field to date when retrieving records using SQL. Use integer values if you expect all values to be numbers. When it comes to computation, MySQL can do better with integer values as compared to text data types such as Varchar (stores variable-length character strings and is the most common string data type).
 
-c. Avoid Null Values
+##### c. Avoid Null Values
 
 Allowing null values (absence of any value in a column) in your database is a really bad idea unless the field can logically have a null value. The presence of null value can adversely affect your database results.
 
 For instance, if you want to get the sum of all orders in a database, the anticipated result might behave badly if a particular order record has a null amount. This kind of misbehavior may not happen only if you have used MySQL ‘ifnull’ statement to return alternative value.
 
-d. Avoid Too Many Columns
+##### d. Avoid Too Many Columns
 
 The biggest downside to having many columns is extra IO and storage overhead.
 Having wide tables can be extremely expensive and causes storage overhead. It is ideal no to go above a hundred unless your business logic specifically necessitates this.
@@ -33,13 +33,13 @@ As opposed to creating one wide table, splitting it apart into logical structure
 
  
 
-2. Optimize Joins
+#### 2. Optimize Joins
 
 Reduce the join statements in queries. An SQL statement with a poorly designed pattern that involves a lot of joins may not work well. A rule of thumb is to have utmost a dozen joins for each query.
 
  
 
-3. Index All Columns Used in ‘where’, ‘order by’, and ‘group by’ Clauses
+#### 3. Index All Columns Used in ‘where’, ‘order by’, and ‘group by’ Clauses
  
 
 INDEXES. A database index is a data structure that improves the speed of operations in a table. Indexes can be created using one or more columns, providing the basis for both rapid random lookups and efficient ordering of access to records.
@@ -56,7 +56,7 @@ GROUP BY clause is used for ordering the result and hence if:
 
  
 
-4. Use Full-Text Searches
+#### 4. Use Full-Text Searches
  
 
 MySQL full-text search (FTS) is far much faster than queries using wildcard characters. To add a full-text search index to the students’ sample table, we can use the below MySQL command:
@@ -71,7 +71,7 @@ Only a single row will be scanned even if our students’ database has huge rows
 
  
 
-5. Optimize Like Statements With Union Clause
+#### 5. Optimize Like Statements With Union Clause
  
 
 Consider a situation when you want to run queries using the comparison operator ‘or’ on different fields or columns in a particular table. Here, if you use the ‘or’ keyword excessively in WHERE clause, there are chances that MySQL optimizer may incorrectly choose a full table scan to retrieve a record.
@@ -86,7 +86,7 @@ mysql> select from students where first_name like ‘Jones%’ union all select 
 
  
 
-6. MySQL Query Caching
+#### 6. MySQL Query Caching
  
 
 As we know, caching is used to improve performance. It will faster the site or application. The MySQL query cache is a global one shared among the sessions. The query cache stores results of SELECT queries enabling the quick return of the query if an identical query is received in the future. When the server for the same query, MySQL ask will retrieve the results from the cache instead of running the query again. This will indeed fasten the process significantly. The results will be set in a memory cache like Memcached or Cassandra.
